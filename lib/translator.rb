@@ -15,11 +15,20 @@ def load_library(library)
     emote[:get_emoticon][value[0]] = value[1]
   end
   puts emote
-  emote 
+  emote
 end
 
-def get_japanese_emoticon
+load_library("./lib/emoticons.yml")
+def get_japanese_emoticon(filepath, english_emote)
   # code goes here
+  library = load_library(filepath)
+  library[:get_emoticon].each do |key, value|
+    if english_emote == key
+      puts value
+      return value
+    end
+  end
+  return "Sorry, that emoticon was not found"
 end
 
 def get_english_meaning
